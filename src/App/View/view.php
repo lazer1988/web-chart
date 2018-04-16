@@ -28,7 +28,7 @@
     <div id="chart">
         <?php
             foreach ($reader->getData() as $values) {
-                echo '<div class="value" timestamp="' . $values[0] . '" value="' . $values[1] . '" title="' . $values[0] . ': ' . $values[1] . '"></div>' . "\r\n";
+                echo '<div class="value" timestamp="' . $values[0] . '" value="' . $values[1] . '"></div>';
             }
         ?>
     </div>

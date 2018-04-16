@@ -3,6 +3,7 @@
 namespace App\Reader;
 
 use App\Exception\ReaderException;
+use App\FileKeeper\FileKeeper;
 
 /**
  * Class CSVReader
@@ -11,6 +12,14 @@ use App\Exception\ReaderException;
  */
 class CSVReader extends AbstractReader
 {
+    /**
+     * {@inheritdoc}
+     */
+    public function isAccept(): bool
+    {
+        return true;
+    }
+
     /**
      * {@inheritdoc}
      */

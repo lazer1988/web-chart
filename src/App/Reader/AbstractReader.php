@@ -23,6 +23,13 @@ abstract class AbstractReader
     }
 
     /**
+     * check if file acceptable for reader
+     *
+     * @return bool
+     */
+    abstract public function isAccept(): bool;
+
+    /**
      * read file and return data
      *
      * @return mixed

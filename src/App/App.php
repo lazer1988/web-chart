@@ -13,18 +13,26 @@ use App\Reader\AbstractReader;
 class App
 {
     /**
-     * @throws Exception\ReaderException
+     * run app
      */
     public function run()
     {
         $developer = 'Bob';
         $color = $_GET['color'] ?? '#C00';
-        //$file = 'http://st.deviantart.net/dt/exercise/data.csv';
+        $color = strval($color);
+        $error = '';
+        $file = $_GET['file'] ?? 'http://st.deviantart.net/dt/exercise/data.csv';
         $file = 'http://st.deviantart.com/dt/exercise/data';
 
-        //$reader = ReaderFactory::getReader(AbstractReader::CSV_TYPE);
-        $reader = ReaderFactory::getReader(AbstractReader::JSON_TYPE);
-        $reader->setFilePath($file);
+        try {
+            $reader = ReaderFactory::getReader(AbstractReader::CSV_TYPE);
+            //$reader = ReaderFactory::getReader(AbstractReader::JSON_TYPE);
+            $reader->setFilePath($file);
+            $chartData = $reader->getData();
+        } catch (\Exception $e) {
+            $error = $e->getMessage();
+            $chartData = [];
+        }
 
         include __DIR__.'/View/view.php';
     }

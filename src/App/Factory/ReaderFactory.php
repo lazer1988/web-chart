@@ -14,6 +14,11 @@ use App\Reader\JSONReader;
  */
 class ReaderFactory
 {
+    private $readers = [
+        JSONReader::class,
+        CSVReader::class,
+    ];
+
     /**
      * @param string $type
      *

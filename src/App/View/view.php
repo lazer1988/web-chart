@@ -3,6 +3,10 @@
 <head>
     <script type="text/javascript" src="chart.js"></script>
     <style>
+        * {
+            box-sizing: border-box;
+        }
+
         #chart {
             position: relative;
             border-bottom: 1px #000 solid;
@@ -20,14 +24,29 @@
             color: #fff;
             cursor: pointer;
         }
+
+        .error{
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 1px solid #ebccd1;
+            border-radius: 4px;
+            color: #a94442;
+            background: #f2dede;
+        }
     </style>
 </head>
 <body onload="init();">
+    <?php
+        if (!empty($error)) {
+            echo '<div class="error">'.$error.'</div>';
+        }
+    ?>
+
     <p>Litres of coffee consumed per week by <?php echo $developer ?></p>
 
     <div id="chart">
         <?php
-            foreach ($reader->getData() as $values) {
+            foreach ($chartData as $values) {
                 echo '<div class="value" timestamp="' . $values[0] . '" value="' . $values[1] . '"></div>';
             }
         ?>

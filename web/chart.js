@@ -1,6 +1,19 @@
+function addEvent(object, type, callback) {
+    if (object == null || typeof(object) == 'undefined') return;
+    if (object.addEventListener) {
+        object.addEventListener(type, callback, false);
+    } else if (object.attachEvent) {
+        object.attachEvent("on" + type, callback);
+    } else {
+        object["on"+type] = callback;
+    }
+}
+
 function init() {
     let app = new App();
     app.drawChart();
+
+    addEvent(window, 'resize', () => app.drawChart());
 }
 
 /**
@@ -10,10 +23,9 @@ function init() {
 class App {
     constructor(){
         this.maxValue = 0;
-        this.chartHeight = 200;
-        this.barWidth = 50;
-
-        this.calcMaxValue();
+        this.chartHeight = 0;
+        this.barWidth = 0;
+        this.spaceBetweenColumns = 10;
     }
 
     getElements(){
@@ -30,6 +42,15 @@ class App {
         });
     }
 
+    calcChartDimensions(){
+        let chart = document.getElementById('chart');
+        this.chartHeight = chart.clientHeight;
+
+        let elements = this.getElements().length;
+
+        this.barWidth = (chart.clientWidth - elements*this.spaceBetweenColumns) / elements;
+    }
+
     getElementTitle(timestamp){
         timestamp = parseInt(timestamp);
         if (!timestamp) {
@@ -44,6 +65,9 @@ class App {
     }
 
     drawChart(){
+        this.calcMaxValue();
+        this.calcChartDimensions();
+
         let elements = this.getElements();
         elements.forEach((el, i) => {
             let newValue = parseInt(el.getAttribute('value'));

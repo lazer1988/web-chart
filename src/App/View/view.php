@@ -1,17 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script type="text/javascript" src="chart.js"></script>
-    <style>
+    <script type="text/javascript" src="/chart.js"></script>
+    <style type="text/css">
         * {
             box-sizing: border-box;
         }
 
+        html, body{
+            height: 100%;
+        }
+
         #chart {
-            position: relative;
+            position: absolute;
             border-bottom: 1px #000 solid;
             border-left: 1px #000 solid;
-            height: 200px;
+            left: 10px;
+            right: 10px;
+            bottom: 10px;
+            top: 50px;
         }
 
         #chart .value {
@@ -35,19 +42,19 @@
         }
     </style>
 </head>
-<body onload="init();">
+<body onload="init()">
     <?php
         if (!empty($error)) {
             echo '<div class="error">'.$error.'</div>';
         }
     ?>
 
-    <p>Litres of coffee consumed per week by <?php echo $developer ?></p>
+    <header>Litres of coffee consumed per week by <?php echo $developer ?></header>
 
     <div id="chart">
         <?php
             foreach ($chartData as $values) {
-                echo '<div class="value" timestamp="' . $values[0] . '" value="' . $values[1] . '"></div>';
+                echo '<div class="value" timestamp="'.$values[0].'" value="'.$values[1].'"></div>';
             }
         ?>
     </div>

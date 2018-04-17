@@ -20,7 +20,7 @@ class App
         $developer = 'Bob';
         $color = strval($_GET['color'] ?? '#C00');
         $error = '';
-        $file = $_GET['file'] ?? 'http://st.deviantart.net/dt/exercise/data.csv';
+        $file = strval($_GET['file'] ?? 'http://st.deviantart.net/dt/exercise/data.csv');
 
         $fileKeeper = new FileKeeper($file);
 

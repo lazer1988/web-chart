@@ -12,6 +12,9 @@ abstract class AbstractReader
     const JSON_TYPE = 'json';
     const CSV_TYPE = 'csv';
 
+    /**
+     * @var string
+     */
     protected $filePath;
 
     /**

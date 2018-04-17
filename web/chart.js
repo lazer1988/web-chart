@@ -58,8 +58,8 @@ class App {
         }
 
         let date = new Date();
-        let week = 604800;
-        let weeks = Math.floor((date.getTime() - (timestamp*1000)) / 1000 / week);
+        let week = 604800 * 1000; // week in milliseconds
+        let weeks = Math.floor((date.getTime() - (timestamp*1000)) / week);
 
         return weeks + ' weeks ago';
     }

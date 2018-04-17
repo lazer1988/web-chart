@@ -17,6 +17,7 @@ class CSVReader extends AbstractReader
      */
     public function isAccept(): bool
     {
+        // check somehow if it's csv
         return true;
     }
 

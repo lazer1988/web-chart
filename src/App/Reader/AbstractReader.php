@@ -17,7 +17,7 @@ abstract class AbstractReader
     /**
      * @param string $filePath
      */
-    public function setFilePath(string $filePath): void
+    public function setFilePath(?string $filePath): void
     {
         $this->filePath = $filePath;
     }

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script type="text/javascript" src="/chart.js"></script>
+    <script type="text/javascript" src="chart.js"></script>
     <style type="text/css">
         * {
             box-sizing: border-box;

@@ -17,7 +17,7 @@ class App
      */
     public function run()
     {
-        $developer = 'Bob';
+        $developer = 'Alex';
         $color = strval($_GET['color'] ?? '#C00');
         $error = '';
         $file = strval($_GET['file'] ?? 'http://st.deviantart.net/dt/exercise/data.csv');

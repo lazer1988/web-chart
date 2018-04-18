@@ -78,7 +78,7 @@ class App {
 
             el.style.height = ((newValue / this.maxValue) * this.chartHeight) + 'px';
             el.style.width = this.barWidth + 'px';
-            el.style.left = (i * (this.barWidth + 10) + 5) + 'px';
+            el.style.left = (i * (this.barWidth + this.spaceBetweenColumns)) + 'px';
             el.innerHTML = newValue;
 
             el.onclick = (litres => {

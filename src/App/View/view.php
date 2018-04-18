@@ -30,6 +30,7 @@
             padding: 2px;
             color: #fff;
             cursor: pointer;
+            text-align: center;
         }
 
         .error{

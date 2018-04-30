@@ -37,7 +37,7 @@ class ReaderFactory
         foreach (self::$readers as $reader) {
             $reader->setFilePath($filePath);
             if ($reader->isAccept()) {
-                return $reader;
+                return clone $reader;
             }
 
             $reader->setFilePath(null);
